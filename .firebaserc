@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "staging": "autisync-c238c",
+    "default": "autisync-c238c"
+  },
+  "targets": {},
+  "etags": {}
+}

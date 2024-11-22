@@ -1,0 +1,248 @@
+/* NavBar */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-container {
+    width: fit-content;
+    background-color: #333;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 0px 20px;
+    color: white;
+  }
+  
+  .navbar-logo img {
+    height: 40px;
+    margin-left: 150px;
+    cursor: pointer;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin-left: 40%;
+  }
+  
+  .navbar-links li {
+    display: inline;
+    text-align: center;
+  }
+  
+  
+  .navbar-links a {
+    color: black;
+    text-decoration: none;
+    font-family: "Poppins";
+  }
+
+   /* PROFILE LOGO SA NAV BAR */
+   .profile-logo {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 70px;
+  }
+
+  /* MODAL FOR PROFILE LOGO */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    position: absolute; 
+    background-color: #FBF9F9;
+    border-radius: 5px;
+    max-width: 200px;
+    padding: 10px 10px 10px 10px;
+    width: 50%;
+    top: 10%; 
+    left: 85%;
+    transform: translateX(-50%); 
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-logo {
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .modal-content p {
+    color: black;
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+    text-decoration: underline;
+  }
+  
+  .modal-content h2 {
+    color: black;
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  /* Buttons (LOGOUT & BADGES */
+  .badges {
+    background-color: #0A6C85;
+    font-family: "Poppins";
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .logout {
+    background-color: #06495A;
+    font-family: "Poppins";
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+
+  /* Banner */
+  .banner_1 {
+    display: flex;
+    justify-content: center;
+    height: 252px;
+    margin: 0;
+  }
+  
+  .badges-banner_1 {
+    position: relative;
+    top: 40px;
+    width: 1050px; 
+    height: 250px; 
+    z-index: 1;
+    border-radius: 20px;
+  }
+
+  /* Divider 1 */
+ .divider_4 {
+  width: 1050px;
+  position: absolute;
+  top: 380px;
+  z-index: 1000;
+ }
+
+ /* Content of Badges Empty and Infos */
+ .content-container {
+  display: flex;
+  gap: 130px;
+  margin: 0;
+  position: relative;
+  top: 100px;
+  left: 275px;
+  width: fit-content;
+ }
+
+ /* Welcome Message Banner */
+
+ .motto {
+  background-color: #FBF8EA;
+  width: 400px;
+  position: relative;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+ }
+
+ .welcome {
+  font-family: "Poppins";
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+ }
+
+ .name {
+  font-family: "Poppins";
+  font-size: 32px;
+  font-weight: 800;
+  text-decoration: underline;
+  position: relative;
+ }
+
+ .rewardtext {
+  font-family: "Poppins";
+  font-size: 17px;
+  font-weight: 400;
+  position: relative;
+ }
+
+ /* Badges Section */
+
+
+ .badges-header {
+  font-family: "Poppins";
+  font-size: 32px;
+  font-weight: 700;
+  color: #06495A;
+  position: relative;
+  top: 45px;
+ }
+
+ .collect {
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #06495A;
+  color: #FFE381;
+  border-style: none;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  width: 150px;
+  height: 35px;
+  position: relative;
+  left: 340px;
+  top: 5px;
+  cursor: pointer;
+ }
+
+ /* Text no badges yet */
+.no-badge-text {
+  font-family: "Poppins";
+  font-size: 15px;
+  color: #9D9393;
+
+}
+

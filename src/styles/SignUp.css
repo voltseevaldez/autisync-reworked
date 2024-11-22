@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* LOGO */
+.logo-container {
+    position: absolute;
+    left: 100px;
+    top: 30px;
+}
+
+.logo-img {
+    width: 200px;
+    height: 45px;
+}
+
+.background-container {
+    width: 100%;
+    height: 100%;
+    background-color: #F9EFCA;
+    position: absolute;
+}
+/* Container for Content */
+.parent-container {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 18%;
+    left: 25%;
+    background-color: #FFF9EF;
+    width: 800px;
+    height: 480px;
+    border-radius: 10px;
+    box-shadow: '10px 10px 12px rgba(0, 0, 0, 0.2)'
+}
+
+/* Login Field */
+.signup-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 56%;
+    padding: 30px;
+  }
+  
+  /* First row container */
+  .first-row {
+    display: flex; 
+    flex-direction: row; 
+    gap: 25px;
+    width: 100%; 
+    margin-bottom: 1px; 
+  }
+
+  /* Second row container */
+  .second-row {
+    display: flex; 
+    width: 100%; 
+    margin-bottom: 1px; 
+  }
+
+  /* Third row container */
+  .third-row {
+    display: flex; 
+    width: 100%; 
+    margin-bottom: 1px; 
+  }
+
+  /* Fourth row container */
+  .fourth-row {
+    display: flex; 
+    width: 100%; 
+    margin-bottom: 4px; 
+  }
+
+/* Fifth row Container */
+.fifth-row {
+    width: 100%;
+  transform: scale(0.7); 
+  transform-origin: top left; 
+  display: flex;
+  gap:30px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.gender-picker {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 6px;
+}
+
+/* Sixth row container */
+.sixth-row {
+    display: flex; 
+    width: 100%; 
+    position: relative;
+    bottom: 30px;
+    margin: 0;
+  }
+
+
+.Signup-Text {
+    font-weight: 700;
+    color: #375A63;
+    font-size: 40px;
+    position: relative;
+    bottom: 30px;
+}
+
+
+/* Image Field */
+.image-container {
+    width: 40%;
+    height: 490px;
+}
+.signup-img {
+    width: 350px;
+    height: 480px;
+    border-radius: 10px;
+}
+
+
+/* Bottom Content */
+.bottom-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.signup-button {
+    border-style: none;
+    background-color: #375A63;
+    color: white;
+    border-radius: 5px;
+    width: 370px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login {
+    color: #494949;
+    font-weight: 800;
+    font-size: 10px;
+    cursor: pointer;
+    margin: 0;
+}
