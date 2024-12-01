@@ -168,19 +168,6 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                 <Box sx={{ mb: 3 }}>
                   <Field
                     component={TextField}
-                    name='difficulty'
-                    label='Difficulty'
-                    select
-                    fullWidth
-                  >
-                    <MenuItem value='easy'>Easy</MenuItem>
-                    <MenuItem value='medium'>Medium</MenuItem>
-                    <MenuItem value='hard'>Hard</MenuItem>
-                  </Field>
-                </Box>
-                <Box sx={{ mb: 3 }}>
-                  <Field
-                    component={TextField}
                     name='category'
                     label='Category'
                     select
@@ -189,7 +176,21 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                   >
                     <MenuItem value='academic'>Academic</MenuItem>
                     <MenuItem value='social'>Social</MenuItem>
-                    <MenuItem value='object'>Object</MenuItem>
+                    <MenuItem value='objects'>Objects</MenuItem>
+                  </Field>
+                </Box>
+
+                <Box sx={{ mb: 3 }}>
+                  <Field
+                    component={TextField}
+                    name='difficulty'
+                    label='Difficulty'
+                    select
+                    fullWidth
+                  >
+                    <MenuItem value='easy'>Easy</MenuItem>
+                    <MenuItem value='medium'>Medium</MenuItem>
+                    <MenuItem value='hard'>Hard</MenuItem>
                   </Field>
                 </Box>
               </Paper>

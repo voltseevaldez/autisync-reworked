@@ -174,7 +174,7 @@ const EditActivity: FC<
                   >
                     <MenuItem value='academic'>Academic</MenuItem>
                     <MenuItem value='social'>Social</MenuItem>
-                    <MenuItem value='object'>Object</MenuItem>
+                    <MenuItem value='objects'>Objects</MenuItem>
                   </Field>
                 </Box>
               </Paper>
