@@ -1,65 +1,12 @@
+import { Divider } from '@mui/material';
 import '../../styles/CompletedActivity.css';
-import { useState } from 'react';
 
-import { Divider } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { UserWrapper } from '~/components';
 
 const CompletedActivity = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  const navigate = useNavigate();
-
-  const BadgesClick = () => {
-    navigate('/BadgesEmpty');
-  };
-
-  const LogoClick = () => {
-    navigate('/');
-  };
-
   return (
     <>
-      {/* NavBar */}
-      <nav className='navbar'>
-        <div className='navbar-logo'>
-          <img onClick={LogoClick} src='images/logo.png' alt='App Logo' />
-        </div>
-        <ul className='navbar-links'>
-          <li>
-            <a href='#about'>About Us</a>
-          </li>
-          <li>
-            <a href='#contact'>Contact Us</a>
-          </li>
-          <li>
-            <a href='#journey'>Journey</a>
-          </li>
-        </ul>
-        <img
-          src='images/profile.png'
-          alt='Profile Logo'
-          onClick={openModal}
-          className='profile-logo'
-        />
-      </nav>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <div className='modal-overlay' onClick={closeModal}>
-          <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-            <h2>Hello!</h2>
-            <p>JHAUNN</p>
-            <button onClick={BadgesClick} className='badges'>
-              Badges
-            </button>
-            <button className='logout'>Logout</button>
-          </div>
-        </div>
-      )}
-
+      <UserWrapper />
       <div className='academic-activity1-header'>
         <p className='AA1-Text'>ACADEMIC</p>
       </div>

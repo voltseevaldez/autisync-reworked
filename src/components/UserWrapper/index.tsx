@@ -17,7 +17,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -183,7 +182,12 @@ export default function TemporaryDrawer({
       {companyInfo && (
         <div>
           <Box sx={{ flexGrow: 1 }}>
-            <AppBar position='sticky' sx={{ mb: 2 }} color='transparent'>
+            <AppBar
+              position='sticky'
+              elevation={0}
+              sx={{ mb: 2 }}
+              color='transparent'
+            >
               <Toolbar>
                 <IconButton
                   size='large'
@@ -204,22 +208,7 @@ export default function TemporaryDrawer({
                   />
                 </Box>
 
-                <Stack spacing={3} direction='row'>
-                  <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-                    {' '}
-                    About Us
-                  </Typography>
-
-                  <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-                    {' '}
-                    Contact Us
-                  </Typography>
-
-                  <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-                    {' '}
-                    Journey
-                  </Typography>
-
+                <Stack spacing={2} className='items-center' direction='row'>
                   <div>
                     <IconButton onClick={handleOpenMenu}>
                       <AccountCircleIcon />
@@ -229,10 +218,10 @@ export default function TemporaryDrawer({
                       onClose={handleCloseMenu}
                       anchorEl={anchorEl}
                     >
-                      <MenuItem>
-                        <ListItemIcon
-                          onClick={() => navigate('/legacy/badges-page')}
-                        >
+                      <h1 className='mx-5 my-5'>Hello {userInfo?.firstName}</h1>
+                      <Divider />
+                      <MenuItem onClick={() => navigate('/legacy/badges-page')}>
+                        <ListItemIcon>
                           <BadgeIcon />
                         </ListItemIcon>
                         <ListItemText primary='Badges' />

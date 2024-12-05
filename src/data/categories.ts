@@ -6,7 +6,6 @@ export interface ICategory {
 }
 
 export const categories: ICategory[] = [
-  // ? First row
   {
     imageLink: '/assets/images/academic.png',
     name: 'Academic',
@@ -25,32 +24,16 @@ export const categories: ICategory[] = [
     link: '/quiz/objects/difficulty',
     categoryLogoLink: '/assets/images/academic-logo.png',
   },
-
-  // ? Second row
-  // {
-  //   imageLink: '/assets/images/academic.png',
-  //   name: 'Academic',
-  // },
-  // {
-  //   imageLink: '/assets/images/social.png',
-  //   name: 'Social',
-  // },
-  // {
-  //   imageLink: '/assets/images/objects.png',
-  //   name: 'Objects',
-  // },
-
-  // ? Third row
-  // {
-  //   imageLink: '/assets/images/academic.png',
-  //   name: 'Academic',
-  // },
-  // {
-  //   imageLink: '/assets/images/social.png',
-  //   name: 'Social',
-  // },
-  // {
-  //   imageLink: '/assets/images/objects.png',
-  //   name: 'Objects',
-  // },
+  {
+    imageLink: '/assets/images/food.png',
+    name: 'Food',
+    link: '/quiz/food/difficulty',
+    categoryLogoLink: '/assets/images/academic-logo.png',
+  },
+  {
+    imageLink: '/assets/images/action.png',
+    name: 'Actions',
+    link: '/quiz/actions/difficulty',
+    categoryLogoLink: '/assets/images/academic-logo.png',
+  },
 ];

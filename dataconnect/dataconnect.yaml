@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "autisync-reworked"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "autisync-reworked-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

@@ -21,8 +21,6 @@ import {
   Home as LegacyHome,
   LegacySignUp,
   LegcyLogin,
-  RoomCoop,
-  RoomSolo,
 } from '~/pages/Legacy';
 import { IPage } from '~/types';
 
@@ -58,12 +56,6 @@ export const Pages: IPage[] = [
   {
     path: '/quiz/:category/:difficulty/choose',
     Component: ChooseActivity,
-    requireAuth: true,
-    requireAdmin: false,
-  },
-  {
-    path: '/activity/:activityId/create-room',
-    Component: RoomCoop,
     requireAuth: true,
     requireAdmin: false,
   },
@@ -149,18 +141,6 @@ export const Pages: IPage[] = [
   {
     path: '/legacy/login',
     Component: LegcyLogin,
-    requireAuth: false,
-    requireAdmin: false,
-  },
-  {
-    path: '/legacy/room-coop',
-    Component: RoomCoop,
-    requireAuth: false,
-    requireAdmin: false,
-  },
-  {
-    path: '/legacy/room-solo',
-    Component: RoomSolo,
     requireAuth: false,
     requireAdmin: false,
   },
