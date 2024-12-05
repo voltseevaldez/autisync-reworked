@@ -44,14 +44,14 @@ const Home2 = () => {
   const items2 = [
     {
       id: 1,
-      image: '/assets/images/academic.png',
+      image: '/assets/images/food.png',
       alt: 'FOODS',
       description:
         'The FOOD identification encourages to help recognize and describe different foods based on visual clues which builds familiarity with various foods in a fun, low-pressure way.',
     },
     {
       id: 2,
-      image: '/assets/images/social.png',
+      image: '/assets/images/action.png',
       alt: 'Actions',
       description:
         'The ACTION identification encourages them to recognize and describe everyday actions. it helps engage their understanding of movements, routines, and reactions. This activity promotes cognitive development and communication skills by linking actions to words and concepts.',
@@ -84,34 +84,7 @@ const Home2 = () => {
 
   return (
     <>
-      {/* NavBar */}
       <UserWrapper />
-      {/* <nav className='navbar'>
-        <div className='navbar-logo'>
-          <img
-            onClick={LogoClick}
-            src='/assets/images/logo.png'
-            alt='App Logo'
-          />
-        </div>
-        <ul className='navbar-links'>
-          <li>
-            <a href='#about'>About Us</a>
-          </li>
-          <li>
-            <a href='#contact'>Contact Us</a>
-          </li>
-          <li>
-            <a href='#journey'>Journey</a>
-          </li>
-        </ul>
-        <img
-          src='/assets/images/profile.png'
-          alt='Profile Logo'
-          onClick={openModal}
-          className='profile-logo'
-        />
-      </nav> */}
 
       {/* Modal */}
       {isModalOpen && (
@@ -144,7 +117,7 @@ const Home2 = () => {
       {/* Section 1 */}
       <div className='flex flex-col items-start mx-40 mt-20'>
         <h1 className='text-4xl underline'>About Us</h1>
-        <div className='pl-4 pt-4 flex flex-row items-start justify-between space-x-52'>
+        <div className='pl-4 pt-4 flex flex-col sm:flex-col md:flex-col lg:flex-row items-center justify-center gap-8'>
           <p>
             At Educational Website Name, we are committed to providing a
             supportive and inclusive learning environment for individuals with
@@ -171,7 +144,11 @@ const Home2 = () => {
             full potential and thrive in both academic and personal pursuits.
           </p>
 
-          <img src='/assets/images/img1.png' alt='Image' />
+          <img
+            className='w-[640px] h-auto'
+            src='/assets/images/img1.png'
+            alt='Image'
+          />
         </div>
       </div>
       <div className='items-center flex flex-col justify-center'>
@@ -185,7 +162,7 @@ const Home2 = () => {
                 className='flex flex-col gap-y-10 items-center justify-center w-[420px] mx-10'
               >
                 <img
-                  className='w-[400x] object-center h-[400px]'
+                  className='w-[400px] object-center h-[400px]'
                   src={item.image}
                   alt={item.alt}
                 />
@@ -201,7 +178,7 @@ const Home2 = () => {
                 className='flex flex-col gap-y-10 items-center justify-center w-[420px] mx-10'
               >
                 <img
-                  className='w-[400x] object-center h-[400px]'
+                  className='w-[400px] object-center h-[400px]'
                   src={item.image}
                   alt={item.alt}
                 />
@@ -220,7 +197,7 @@ const Home2 = () => {
                 key={item.id}
                 className='flex flex-col gap-y-10 items-center justify-center w-[420px] mx-10'
               >
-                <h1 className='w-[200px] text-center text-4xl bg-yellow-300 p-4 rounded-lg object-center h-auto'>
+                <h1 className='w-[200px] text-center text-4xl bg-[#F9EFCA] p-4 rounded-lg object-center h-auto'>
                   {item.type}
                 </h1>
                 <p className='w-[400px] h-[400px]'>{item.description}</p>

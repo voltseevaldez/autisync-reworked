@@ -26,6 +26,7 @@ import { IUser } from '~/types';
 import {
   SetDocument,
   collections,
+  createHashMap,
   database,
   useErrorNotif,
   useListen,
@@ -102,6 +103,10 @@ const FinishedActivity: FC<{
 
   const { user } = useLogin();
 
+  const [showBadgePopup, setShowBadgePopup] = useState(false);
+
+  const [updatedBadges, setUpdatedBadges] = useState<IBadge[]>([]);
+
   const handleFinishActivity = async () => {
     try {
       if (!!user) {
@@ -132,6 +137,14 @@ const FinishedActivity: FC<{
             uniqueBadges.push(badge);
           }
         });
+
+        const updatedBadges = uniqueBadges.filter(
+          (badge) => !newBadges.includes(badge)
+        );
+        if (updatedBadges.length > 0) {
+          setUpdatedBadges(updatedBadges);
+          setShowBadgePopup(true);
+        }
         // TODO: Save Progress
         await SetDocument<IUser>({
           docRef,
@@ -153,10 +166,9 @@ const FinishedActivity: FC<{
         });
       }
 
-      // TODO: Award any badges
-
-      // TODO: Navigate to home
-      navigate('/legacy/home2');
+      setTimeout(() => {
+        navigate('/legacy/home2');
+      }, 3000);
     } catch (err) {
       console.error(err);
       showError("Couldn't finish activity. Please try again later.");
@@ -186,6 +198,50 @@ const FinishedActivity: FC<{
           </Box>
         </Stack>
       </Paper>
+
+      {showBadgePopup && (
+        <div className='badge-popup'>
+          <Box
+            sx={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Paper
+              elevation={3}
+              sx={{
+                p: 3,
+                maxWidth: '500px',
+                width: '90%',
+                backgroundColor: '#ffffff',
+                borderRadius: '15px',
+              }}
+            >
+              <Typography variant='h4'>
+                Congratulations! You Earned New Badges!
+              </Typography>
+              <ul>
+                {updatedBadges.map((badge, index) => (
+                  <div
+                    key={index}
+                    className='flex flex-col items-center justify-center'
+                  >
+                    <img src={badge.imageLink} />
+                    <li key={index}>{badge.description}</li>
+                  </div>
+                ))}
+              </ul>
+            </Paper>
+          </Box>
+        </div>
+      )}
     </Box>
   );
 };
@@ -222,6 +278,12 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
   ) => {
     setChatInput(event.target.value);
   };
+
+  const { docs: users } = useListen<IUser>({
+    collectionRef: collections.users.ref,
+  });
+
+  const userMap = createHashMap(users || [], 'id');
 
   const handleChat = async () => {
     if (isSending) return; // Prevent double sending
@@ -266,7 +328,11 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
       <UserWrapper />
 
       <div className='academic-activity1-header'>
-        <p className='AA1-Text'>ACADEMIC</p>
+        <h1 className='AA1-Text'>
+          {activity.category && typeof activity.category === 'string'
+            ? activity.category.toUpperCase()
+            : 'Unknown'}
+        </h1>
         <img
           src='/assets/images/horn.png'
           alt='Horn Logo'
@@ -291,7 +357,10 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
       )}
 
       {activeStep < totalSteps + 1 ? (
-        <div className='activity-container' style={{ marginBottom: '2rem' }}>
+        <div
+          className='activity-container relative'
+          style={{ marginBottom: '2rem' }}
+        >
           <div className='activity1-card'>
             <div className='question'>
               <p className='question1-text'>
@@ -304,7 +373,7 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
                 <img
                   className='sheep1'
                   src={activity.questions[activeStep - 1]?.imageLink || ''}
-                  alt='Sheep 1'
+                  alt='image'
                 />
               </div>
             </div>
@@ -335,7 +404,7 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
           </div>
 
           {room && room?.members.length > 1 && (
-            <div className='chat-card'>
+            <div className='w-auto first-letter hidden md:block bg-[#f9f4e1] rounded-lg shadow-md h-[500px] absolute right-[1%]'>
               {room && room?.members.length > 1 && (
                 <Box
                   sx={{
@@ -343,8 +412,8 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
                     flexDirection: 'column',
                     width: '100%',
                     height: '100%',
-                    justifyContent: 'space-between',
-                    px: 2,
+                    justifyContent: 'center',
+                    px: 1,
                   }}
                 >
                   <Stack
@@ -367,11 +436,15 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
                             user === currentUser?.uid ? 'row-reverse' : 'row',
                           alignItems: 'center',
                           mb: 2,
+                          position: 'relative',
                         }}
                       >
+                        <h1 className='absolute text-xs top-[-14%]'>
+                          {userMap?.get(user)?.firstName || 'User'}
+                        </h1>
                         <Avatar
-                          alt={user}
-                          src={`/path/to/profile/icons/${user}.png`} // Replace with actual path to profile icons
+                          alt={userMap?.get(user)?.firstName || 'User'}
+                          src={`/path/to/profile/icons/${user}.png`}
                           sx={{
                             width: 32,
                             height: 32,
@@ -385,6 +458,7 @@ const MainComponent: FC<{ activity: IActivity; room: IRoom | undefined }> = ({
                               user === currentUser?.uid ? '#DCF8C6' : '#FFF',
                             borderRadius: 2,
                             p: 1,
+                            marginTop: 1,
                             maxWidth: '70%',
                             boxShadow: 1,
                           }}

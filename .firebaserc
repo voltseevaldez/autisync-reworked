@@ -3,6 +3,14 @@
     "staging": "autisync-c238c",
     "default": "autisync-c238c"
   },
-  "targets": {},
+  "targets": {
+    "autisync-c238c": {
+      "hosting": {
+        "prod": [
+          "autisync-c238c"
+        ]
+      }
+    }
+  },
   "etags": {}
 }

@@ -18,7 +18,7 @@ import { doc } from 'firebase/firestore';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { UserWrapper } from '~/components';
-import { IRoom } from '~/data';
+import { IActivity, IRoom } from '~/data';
 import { IUser } from '~/types';
 import {
   SetDocument,
@@ -60,16 +60,27 @@ const RoomCoop = () => {
       },
     ],
   });
+  const room = (rooms || [])[0] || {};
 
   const { docs: users, isLoading: isFetchingUsers } = useListen<IUser>({
     collectionRef: collections.users.ref,
   });
 
+  const { docs: activities, isLoading: isFetchingActivities } =
+    useListen<IActivity>({
+      collectionRef: collections.activities.ref,
+      filters: [], // Fetch all activities
+    });
+
+  if (isFetchingActivities || !activities || activities.length === 0)
+    return <div>Loading activities...</div>;
+
+  const activity = activities?.find((a) => a.id === room.activity);
+  const category = activity?.category || 'Unknown';
+
   const userMap = createHashMap(users || [], 'id');
 
   if (isFetchingRooms || isFetchingUsers) return <>Loading...</>;
-
-  const room = (rooms || [])[0] || {};
 
   const handleStartActivity = async () => {
     try {
@@ -132,7 +143,6 @@ const RoomCoop = () => {
   ) => {
     setChatInput(event.target.value);
   };
-
   return (
     <>
       {/* NavBar */}
@@ -148,7 +158,11 @@ const RoomCoop = () => {
                 src='/assets/images/academic-logo.png'
                 alt='Academic Logo'
               ></img>
-              <h1 className='room-header'>ACADEMIC</h1>
+              <h1 className='room-header'>
+                {category && typeof category === 'string'
+                  ? category.toUpperCase()
+                  : 'Unknown'}
+              </h1>
             </div>
             <div className='room-header-end'>
               <p className='room-header-text'>

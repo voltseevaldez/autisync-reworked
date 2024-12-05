@@ -177,6 +177,8 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                     <MenuItem value='academic'>Academic</MenuItem>
                     <MenuItem value='social'>Social</MenuItem>
                     <MenuItem value='objects'>Objects</MenuItem>
+                    <MenuItem value='food'>Food</MenuItem>
+                    <MenuItem value='actions'>Actions</MenuItem>
                   </Field>
                 </Box>
 
