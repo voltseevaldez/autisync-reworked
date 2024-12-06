@@ -122,6 +122,7 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
       <AppBar
         position='static'
         sx={{
+          background: '#FFC700',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexDirection: 'row',
@@ -214,6 +215,7 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                       >
                         <Button
                           variant='contained'
+                          sx={{ background: '#FFC700' }}
                           onClick={() =>
                             push({
                               imageLink: '',
@@ -272,7 +274,7 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                                   color='error'
                                   variant='outlined'
                                   onClick={() => remove(badgesIdx)}
-                                  sx={{ ml: 2 }}
+                                  sx={{ ml: 2, background: '#FFC700' }}
                                   endIcon={<DeleteIcon />}
                                 >
                                   Remove Badge
@@ -302,6 +304,7 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                       <Typography variant='h4'>Questions</Typography>
                       <Button
                         variant='contained'
+                        sx={{ background: '#FFC700' }}
                         onClick={() =>
                           push({
                             imageLink: '',
@@ -381,6 +384,7 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                                     Choices
                                   </Typography>
                                   <Button
+                                    sx={{ background: '#FFC700' }}
                                     variant='contained'
                                     onClick={() =>
                                       push({ choice: '', isCorrect: false })
@@ -462,10 +466,19 @@ const AddActivity: FC<DialogProps & { onClose: () => void }> = ({
                 }}
               >
                 <Box position='fixed' bottom={20}>
-                  <Button variant='outlined' onClick={onClose} sx={{ mr: 2 }}>
+                  <Button
+                    variant='contained'
+                    onClick={onClose}
+                    sx={{ mr: 2, background: '#FFC700' }}
+                  >
                     Cancel
                   </Button>
-                  <Button variant='contained' color='primary' type='submit'>
+                  <Button
+                    variant='contained'
+                    sx={{ background: '#FFC700' }}
+                    color='primary'
+                    type='submit'
+                  >
                     Save Activity
                   </Button>
                 </Box>

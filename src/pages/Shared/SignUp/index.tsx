@@ -151,7 +151,7 @@ const SignUpPage: React.FC = () => {
             values.email,
             values.password
           );
-          if (loginCredentials.user) navigate('/home');
+          if (loginCredentials.user) navigate('/legacy/home2');
         }
       }
       // window.setTimeout(() => resetForm(), 1500);
@@ -323,7 +323,7 @@ const SignUpPage: React.FC = () => {
 
               <LoadingButton
                 loading={isSubmitting}
-                style={{ marginTop: theme.spacing(2) }}
+                style={{ marginTop: theme.spacing(2), background: '#ffc700' }}
                 variant='contained'
                 type='submit'
               >

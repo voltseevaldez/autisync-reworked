@@ -118,34 +118,21 @@ const FinishedActivity: FC<{
         const existingBadges = existingUserData.data()?.badges || [];
         const newBadges = activity?.badges || [];
 
-        // Create a Set to store unique badges based on the description
-        const uniqueBadgesSet = new Set<string>();
-        const uniqueBadges: IBadge[] = [];
-
-        // Add existing badges to the Set
-        existingBadges.forEach((badge: IBadge) => {
-          if (!uniqueBadgesSet.has(badge.description)) {
-            uniqueBadgesSet.add(badge.description);
-            uniqueBadges.push(badge);
-          }
-        });
-
-        // Add new badges to the Set
-        newBadges.forEach((badge: IBadge) => {
-          if (!uniqueBadgesSet.has(badge.description)) {
-            uniqueBadgesSet.add(badge.description);
-            uniqueBadges.push(badge);
-          }
-        });
-
-        const updatedBadges = uniqueBadges.filter(
-          (badge) => !newBadges.includes(badge)
+        // Find the badges earned from this activity
+        const badgesEarnedFromActivity = newBadges.filter(
+          (badge) =>
+            !existingBadges.some(
+              (existingBadge: any) =>
+                existingBadge.description === badge.description
+            )
         );
-        if (updatedBadges.length > 0) {
-          setUpdatedBadges(updatedBadges);
+
+        if (badgesEarnedFromActivity.length > 0) {
+          setUpdatedBadges(badgesEarnedFromActivity);
           setShowBadgePopup(true);
         }
-        // TODO: Save Progress
+
+        // Update user document with new badges and progress
         await SetDocument<IUser>({
           docRef,
           data: {
@@ -161,7 +148,10 @@ const FinishedActivity: FC<{
                 room: room.id,
               },
             ],
-            badges: uniqueBadges,
+            badges: [
+              ...(existingUserData.data()?.badges || []),
+              ...badgesEarnedFromActivity,
+            ],
           },
         });
       }

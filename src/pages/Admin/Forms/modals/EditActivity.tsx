@@ -107,6 +107,7 @@ const EditActivity: FC<
       <AppBar
         position='static'
         sx={{
+          background: '#FFC700',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexDirection: 'row',
@@ -199,6 +200,7 @@ const EditActivity: FC<
                       >
                         <Button
                           variant='contained'
+                          sx={{ background: '#FFC700' }}
                           onClick={() =>
                             push({
                               imageLink: '',
@@ -287,6 +289,7 @@ const EditActivity: FC<
                       <Typography variant='h4'>Questions</Typography>
                       <Button
                         variant='contained'
+                        sx={{ background: '#FFC700' }}
                         onClick={() =>
                           push({
                             imageLink: '',
@@ -366,6 +369,7 @@ const EditActivity: FC<
                                     Choices
                                   </Typography>
                                   <Button
+                                    sx={{ background: '#FFC700' }}
                                     variant='contained'
                                     onClick={() =>
                                       push({ choice: '', isCorrect: false })
@@ -447,10 +451,19 @@ const EditActivity: FC<
                 }}
               >
                 <Box position='fixed' bottom={20}>
-                  <Button variant='outlined' onClick={onClose} sx={{ mr: 2 }}>
+                  <Button
+                    variant='contained'
+                    sx={{ background: '#FFC700', mr: 2 }}
+                    onClick={onClose}
+                  >
                     Cancel
                   </Button>
-                  <Button variant='contained' color='primary' type='submit'>
+                  <Button
+                    variant='contained'
+                    sx={{ background: '#FFC700' }}
+                    color='primary'
+                    type='submit'
+                  >
                     Save Activity
                   </Button>
                 </Box>
