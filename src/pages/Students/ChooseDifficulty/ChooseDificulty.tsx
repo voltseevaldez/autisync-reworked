@@ -40,7 +40,7 @@ const DifficultyPage = () => {
       <div className='difficulty-content-container'>
         <div className='category-picture'>
           <img
-            className='category-logo'
+            className='w-14 h-14'
             src={selectedCategory?.categoryLogoLink}
           ></img>
           <div className='category-text'>
