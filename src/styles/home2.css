@@ -21,6 +21,7 @@
   .navbar-links {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 20px;
     margin-left: 40%;
   }
@@ -78,6 +79,8 @@
     width: 1050px; 
     height: 350px; 
     z-index: 1;
+    
+    
   }
   .banner-button {
     position: absolute; 

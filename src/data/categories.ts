@@ -6,7 +6,6 @@ export interface ICategory {
 }
 
 export const categories: ICategory[] = [
-  // ? First row
   {
     imageLink: '/assets/images/academic.png',
     name: 'Academic',
@@ -17,40 +16,24 @@ export const categories: ICategory[] = [
     imageLink: '/assets/images/social.png',
     name: 'Social',
     link: '/quiz/social/difficulty',
-    categoryLogoLink: '/assets/images/academic-logo.png',
+    categoryLogoLink: '/assets/images/social-logo.png',
   },
   {
     imageLink: '/assets/images/objects.png',
     name: 'Objects',
     link: '/quiz/objects/difficulty',
-    categoryLogoLink: '/assets/images/academic-logo.png',
+    categoryLogoLink: '/assets/images/objects-logo.png',
   },
-
-  // ? Second row
-  // {
-  //   imageLink: '/assets/images/academic.png',
-  //   name: 'Academic',
-  // },
-  // {
-  //   imageLink: '/assets/images/social.png',
-  //   name: 'Social',
-  // },
-  // {
-  //   imageLink: '/assets/images/objects.png',
-  //   name: 'Objects',
-  // },
-
-  // ? Third row
-  // {
-  //   imageLink: '/assets/images/academic.png',
-  //   name: 'Academic',
-  // },
-  // {
-  //   imageLink: '/assets/images/social.png',
-  //   name: 'Social',
-  // },
-  // {
-  //   imageLink: '/assets/images/objects.png',
-  //   name: 'Objects',
-  // },
+  {
+    imageLink: '/assets/images/food.png',
+    name: 'Food',
+    link: '/quiz/food/difficulty',
+    categoryLogoLink: '/assets/images/food-logo.png',
+  },
+  {
+    imageLink: '/assets/images/action.png',
+    name: 'Actions',
+    link: '/quiz/actions/difficulty',
+    categoryLogoLink: '/assets/images/action-logo.png',
+  },
 ];

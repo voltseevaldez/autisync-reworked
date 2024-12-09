@@ -43,54 +43,13 @@ const BadgeComponent: FC<{ userId: string }> = ({ userId }) => {
   const userInfo = userInfos?.find((user) => user.id === userId) || undefined;
 
   const CollectClick = () => {
-    navigate('/legacy/category-list');
+    navigate('/quiz/category');
   };
 
   if (isLoading) return <p>Loading...</p>;
-
   return (
     <>
-      {/* NavBar */}
-      {/* <nav className='navbar'>
-        <div className='navbar-logo'>
-          <img
-            onClick={LogoClick}
-            src='/assets/images/logo.png'
-            alt='App Logo'
-          />
-        </div>
-        <ul className='navbar-links'>
-          <li>
-            <a href='#about'>About Us</a>
-          </li>
-          <li>
-            <a href='#contact'>Contact Us</a>
-          </li>
-          <li>
-            <a href='#journey'>Journey</a>
-          </li>
-        </ul>
-        <img
-          src='/assets/images/profile.png'
-          alt='Profile Logo'
-          onClick={openModal}
-          className='profile-logo'
-        />
-      </nav> */}
       <UserWrapper />
-
-      {/* Modal */}
-      {/* {isModalOpen && (
-        <div className='modal-overlay' onClick={closeModal}>
-          <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-            <h2>Hello!</h2>
-            <p>JHAUNN</p>
-            <button className='badges'>Badges</button>
-            <button className='logout'>Logout</button>
-          </div>
-        </div>
-      )} */}
-
       <div className='banner_1'>
         <img
           src='/assets/images/badges_banner.png'
@@ -134,12 +93,17 @@ const BadgeComponent: FC<{ userId: string }> = ({ userId }) => {
               }}
             />
             <div className='badgest-list'>
-              {(userInfo?.badges || []).length > 0 ? (
-                <img
-                  src='/assets/images/badges.png'
-                  alt='Badge 1'
-                  className='badge_1'
-                />
+              {userInfo?.badges && userInfo.badges.length > 0 ? (
+                <div className='badge-container grid grid-cols-3 gap-4'>
+                  {userInfo.badges.map((badge, index) => (
+                    <img
+                      key={index}
+                      src={badge.imageLink}
+                      alt={`Badge ${index + 1}`}
+                      className={`badge_${index + 1}`}
+                    />
+                  ))}
+                </div>
               ) : (
                 <p className='no-badge-text'>
                   Perform Activities to Collect Badges!

@@ -6,6 +6,7 @@ import { Divider } from 'antd';
 import { doc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
+import { UserWrapper } from '~/components';
 import { IRoom, categories } from '~/data';
 import {
   SetDocument,
@@ -32,7 +33,6 @@ const CategoryList = () => {
 
   const navigate = useNavigate();
   // for Profile logo modal //
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [roomNumber, setRoomNumber] = useState(''); // State for controlled input
   const [isSubmitting, setIsSubmitting] = useState(false); // State for controlled input
   const handleRoomNumberChange = (
@@ -41,9 +41,6 @@ const CategoryList = () => {
     setRoomNumber(event.target.value);
   };
   const roomsMap = createHashMap(rooms || [], 'roomNumber');
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   // for join now modal //
   const [Join, setJoin] = useState(false);
@@ -86,14 +83,11 @@ const CategoryList = () => {
     }
   };
 
-  const LogoClick = () => {
-    navigate('/');
-  };
-
   if (isLoading) return <>...Loading</>;
 
   return (
     <>
+      <UserWrapper />
       {/* Join now Modal*/}
       {Join && (
         <div className='join-overlay' onClick={closeJoin}>
@@ -145,46 +139,6 @@ const CategoryList = () => {
                 JOIN
               </button>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* NavBar */}
-      <nav className='navbar'>
-        <div className='navbar-logo'>
-          <img
-            onClick={LogoClick}
-            src='/assets/images/logo.png'
-            alt='App Logo'
-          />
-        </div>
-        <ul className='navbar-links'>
-          <li>
-            <a href='#about'>About Us</a>
-          </li>
-          <li>
-            <a href='#contact'>Contact Us</a>
-          </li>
-          <li>
-            <a href='#journey'>Journey</a>
-          </li>
-        </ul>
-        <img
-          src='/assets/images/profile.png'
-          alt='Profile Logo'
-          onClick={openModal}
-          className='profile-logo'
-        />
-      </nav>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <div className='modal-overlay' onClick={closeModal}>
-          <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-            <h2>Hello!</h2>
-            <p>JHAUNN</p>
-            <button className='badges'>Badges</button>
-            <button className='logout'>Logout</button>
           </div>
         </div>
       )}

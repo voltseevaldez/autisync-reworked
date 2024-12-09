@@ -183,7 +183,7 @@ const LoginPage: React.FC = (props: any) => {
 
               <LoadingButton
                 loading={isSubmitting}
-                style={{ marginTop: theme.spacing() }}
+                style={{ marginTop: theme.spacing(), background: '#ffc700' }}
                 variant='contained'
                 type='submit'
               >
